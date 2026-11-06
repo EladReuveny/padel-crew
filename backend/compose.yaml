@@ -1,0 +1,28 @@
+services:
+  padel-crew-server:
+    build:
+      context: .
+    container_name: padel-crew-server
+    env_file:
+      - .env
+    restart: unless-stopped
+    ports:
+      - ${PORT:-3000}:3000
+    depends_on:
+      padel-crew-server-db:
+        condition: service_healthy
+  padel-crew-db:
+    image: postgres:17-alpine
+    container_name: padel-crew-db
+    restart: unless-stopped
+    ports:
+      - ${DB_PORT:-5432}:5432
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD', 'pg_isready', '-U', 'postgres']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+volumes:
+  db-data:

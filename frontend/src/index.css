@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: hsl(160, 84%, 39%);
+  --color-bg: hsl(223, 84%, 5%);
+  --color-text: hsl(214, 32%, 91%);
+}
+
+:root {
+  --primary-clr: hsl(160, 84%, 39%);
+  --bg-clr: hsl(223, 84%, 5%);
+  --text-clr: hsl(214, 32%, 91%);
+}
+
+* {
+  font-family: "Inter", "Roboto", sans-serif;
+  caret-color: var(--primary-clr);
+  transition: 0.3s;
+}
+
+body {
+  background-color: var(--bg-clr);
+  color: var(--text-clr);
+}
+
+::selection {
+  background: var(--primary-clr);
+  color: var(--text-clr);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-clr);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--primary-clr);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-clr);
+}

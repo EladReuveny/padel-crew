@@ -1,0 +1,126 @@
+{
+  "type": "diff",
+  "version": "9",
+  "dialect": "postgres",
+  "id": "5beff8a6-a7f2-4b93-932b-e4537fc3a1b0",
+  "prevIds": [
+    "01d54655-77e5-4caf-ac7d-c12bfa68a107"
+  ],
+  "footprints": [
+    {
+      "statementType": "drop_index",
+      "statementTarget": [
+        "index",
+        "public",
+        "games",
+        "games_date_idx"
+      ],
+      "writes": [
+        "s|idx|public.games_date_idx",
+        "n|idx|public.games_date_idx",
+        "e|idx|public.games_date_idx",
+        "n|rel|public.games_date_idx"
+      ],
+      "reads": [
+        "e|tbl|public.games",
+        "n|sch|public",
+        "e|col|public.games.date"
+      ],
+      "sharedWrites": []
+    },
+    {
+      "statementType": "create_index",
+      "statementTarget": [
+        "index",
+        "public",
+        "games",
+        "games_creator_id_idx"
+      ],
+      "writes": [
+        "s|idx|public.games_creator_id_idx",
+        "n|idx|public.games_creator_id_idx",
+        "e|idx|public.games_creator_id_idx",
+        "n|rel|public.games_creator_id_idx"
+      ],
+      "reads": [
+        "n|tbl|public.games",
+        "n|sch|public",
+        "n|col|public.games.creator_id"
+      ]
+    },
+    {
+      "statementType": "create_index",
+      "statementTarget": [
+        "index",
+        "public",
+        "games",
+        "games_status_idx"
+      ],
+      "writes": [
+        "s|idx|public.games_status_idx",
+        "n|idx|public.games_status_idx",
+        "e|idx|public.games_status_idx",
+        "n|rel|public.games_status_idx"
+      ],
+      "reads": [
+        "n|tbl|public.games",
+        "n|sch|public",
+        "n|col|public.games.status"
+      ]
+    }
+  ],
+  "deltas": [
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "games",
+        "name": "games_creator_id_idx",
+        "nameExplicit": true,
+        "columns": [
+          {
+            "value": "creator_id",
+            "isExpression": false,
+            "asc": true,
+            "nullsFirst": false,
+            "opclass": null
+          }
+        ],
+        "isUnique": false,
+        "where": null,
+        "with": "",
+        "method": "btree",
+        "concurrently": false,
+        "entityType": "indexes"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "games",
+        "name": "games_status_idx",
+        "nameExplicit": true,
+        "columns": [
+          {
+            "value": "status",
+            "isExpression": false,
+            "asc": true,
+            "nullsFirst": false,
+            "opclass": null
+          }
+        ],
+        "isUnique": false,
+        "where": null,
+        "with": "",
+        "method": "btree",
+        "concurrently": false,
+        "entityType": "indexes"
+      }
+    },
+    {
+      "op": "drop",
+      "key": "indexes\u0000[\"public\",\"games_date_idx\"]"
+    }
+  ]
+}

@@ -2,7 +2,7 @@ import { HttpStatus, Injectable } from '@nestjs/common';
 
 @Injectable()
 export class AppService {
-  getHealth(): {
+  healthCheck(): {
     service: string;
     status: HttpStatus;
     message: string;
@@ -12,7 +12,14 @@ export class AppService {
       service: 'Padel Crew API',
       status: HttpStatus.OK,
       message: 'Service is healthy',
-      timestamp: new Date().toISOString(),
+      timestamp: new Date().toLocaleString('en-US', {
+        year: 'numeric',
+        month: 'numeric',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric',
+      }),
     };
   }
 }

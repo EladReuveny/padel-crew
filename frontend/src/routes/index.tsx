@@ -14,10 +14,10 @@ const gamesQueryOptions = queryOptions({
 });
 
 export const Route = createFileRoute("/")({
-  component: HomePage,
   loader: async ({ context }) => {
     await context.queryClient.query({ ...gamesQueryOptions });
   },
+  component: HomePage,
 });
 
 function HomePage() {
@@ -76,10 +76,10 @@ function HomePage() {
               מצא משחקים
             </p>
             <h1 className="mt-2 sm:mt-3 text-2xl sm:text-3xl md:text-4xl font-bold text-(--text-clr)">
-              מצא את משחק הפדאל הבא שלך.
+              מצא את משחק הפדאל הבא שלך
             </h1>
             <p className="mt-2 max-w-2xl text-xs sm:text-sm leading-relaxed text-(--text-clr)/70">
-              עיין במשחקים הקרובים, ראה מי משחק ו הצטרף למשחקים שמתאימים ללוח הזמנים שלך.
+              עיין במשחקים הקרובים, ראה מי משחק והצטרף למשחקים שמתאימים ללוח הזמנים שלך.
             </p>
           </div>
 

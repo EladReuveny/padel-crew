@@ -1,6 +1,6 @@
 import { ErrorComponentProps, Link } from "@tanstack/react-router";
-import { Button } from "./Button";
 import { TriangleAlert } from "lucide-react";
+import { Button } from "./Button";
 
 export function ErrorPage({ error, reset }: ErrorComponentProps) {
   return (
@@ -20,7 +20,7 @@ export function ErrorPage({ error, reset }: ErrorComponentProps) {
 
         <div className="mt-6 flex flex-col gap-2">
           {reset && (
-            <Button variant="primary" className="w-full" onClick={() => reset()}>
+            <Button variant="primary" className="w-full" onClick={reset}>
               נסה שוב
             </Button>
           )}

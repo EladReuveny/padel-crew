@@ -9,7 +9,7 @@ import { handleError } from "../../lib/utils/utils";
 
 const findGameByIdQuery = (gameId: string) =>
   queryOptions({
-    queryKey: ["game", gameId],
+    queryKey: ["games", gameId],
     queryFn: () => gamesApi.findById(gameId),
     enabled: !!gameId,
   });

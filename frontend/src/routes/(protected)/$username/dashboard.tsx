@@ -371,16 +371,16 @@ function DashboardPage() {
 
           <div className="rounded-2xl border border-(--text-clr)/10 bg-(--bg-clr) p-3">
             <div className="mb-3 px-2 pt-1">
-              <p className="text-xs font-semibold uppercase tracking-wider text-(--text-clr)/50">
+              <p className="font-semibold uppercase tracking-wider text-(--text-clr)/60">
                 תצוגת משחקים
               </p>
 
-              <p className="mt-1 text-xs text-(--text-clr)/40">בחר אילו משחקים להציג</p>
+              <p className="mt-1 text-sm text-(--text-clr)/50">בחר אילו משחקים להציג</p>
             </div>
 
             <div className="grid grid-cols-2 gap-2">
               {displayModes.map(({ label, description, value, Icon }) => {
-                const isActive = displayMode === value;
+                const isActive = value === displayMode;
 
                 return (
                   <button
@@ -394,8 +394,8 @@ function DashboardPage() {
                         focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary
                         ${
                           isActive
-                            ? "border-primary/40 bg-primary/10 shadow-sm shadow-primary/10"
-                            : "border-transparent bg-(--text-clr)/3 hover:border-(--text-clr)/15 hover:bg-(--text-clr)/5"
+                            ? "border-primary/40 bg-primary/20 shadow-sm shadow-primary/10"
+                            : "border-transparent bg-(--text-clr)/5 hover:border-(--text-clr)/20 hover:bg-(--text-clr)/10"
                         }
                       `}
                   >
@@ -405,12 +405,12 @@ function DashboardPage() {
                           rounded-xl transition-colors
                           ${
                             isActive
-                              ? "bg-primary text-white"
-                              : "bg-(--text-clr)/5 text-(--text-clr)/60 group-hover:text-primary"
+                              ? "bg-primary text-(--text-clr)"
+                              : "bg-(--text-clr)/10 text-(--text-clr)/60 group-hover:text-primary"
                           }
                         `}
                     >
-                      <Icon size={20} />
+                      <Icon className="size-4" />
                     </div>
 
                     <div className="min-w-0 space-y-1">
@@ -422,7 +422,7 @@ function DashboardPage() {
                         {label}
                       </p>
 
-                      <p className="text-xs leading-relaxed text-(--text-clr)/50">{description}</p>
+                      <p className="text-xs leading-relaxed text-(--text-clr)/60">{description}</p>
                     </div>
                   </button>
                 );
@@ -441,12 +441,14 @@ function DashboardPage() {
                   <activeModeItem.Icon className="size-5 text-primary" />
                 </div>
 
-                <div className="min-w-0">
+                <div>
                   <h2 className="text-lg font-semibold text-(--text-clr)">
                     {activeModeItem.label}
                   </h2>
 
-                  <p className="mt-0.5 text-xs text-(--text-clr)/50">{games?.length} משחקים</p>
+                  <span className="inline-block mt-0.5 text-sm text-(--text-clr)/75">
+                    {games?.length} משחקים
+                  </span>
                 </div>
               </div>
             </div>
@@ -465,7 +467,7 @@ function DashboardPage() {
                     : "אין לך משחקים פעילים כרגע."}
                 </p>
 
-                <p className="mt-2 text-xs text-(--text-clr)/45">
+                <p className="mt-2 text-sm text-(--text-clr)/45">
                   המשחקים שלך יופיעו כאן לאחר שתצטרף או תיצור משחק.
                 </p>
               </div>

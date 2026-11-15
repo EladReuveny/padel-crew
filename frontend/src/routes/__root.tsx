@@ -167,7 +167,7 @@ export function RootLayout() {
 
           {/* Mobile Menubar Dropdown */}
           {isMobileMenuOpen && (
-            <div className="border-t border-(--text-clr)/10 bg-(--bg-clr)/95 p-4 backdrop-blur-md md:hidden">
+            <div className="h-[calc(100vh-102.5px)] overflow-y-auto border-t border-(--text-clr)/10 bg-(--bg-clr)/95 p-4 backdrop-blur-md md:hidden">
               <nav className="flex flex-col gap-2">
                 {auth.user ? (
                   <>
@@ -176,10 +176,8 @@ export function RootLayout() {
                         <UserCircle2 className="h-6 w-6" />
                       </div>
                       <div className="min-w-0 flex-1">
-                        <p className="text-xs text-primary/80">מחובר כ-</p>
-                        <p className="truncate text-sm font-semibold text-(--text-clr)">
-                          {auth.user.username}
-                        </p>
+                        <p className="text-sm text-primary/80">מחובר כ-</p>
+                        <p className="truncate text-sm font-semibold">{auth.user.username}</p>
                       </div>
                     </div>
 

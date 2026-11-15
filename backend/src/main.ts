@@ -35,7 +35,7 @@ async function bootstrap() {
   const PORT = configService.get<number>('PORT') ?? 3000;
   const NODE_ENV = configService.get<string>('NODE_ENV') ?? 'dev';
   const BACKEND_URL =
-    configService.get<string>('API_URL') ?? `http://localhost:3000/api/v1`;
+    configService.get<string>('BACKEND_URL') ?? `http://localhost:3000/api/v1`;
   await app.listen(PORT, () => {
     logger.log(
       `Server is running on ${NODE_ENV.toUpperCase()} mode at ${BACKEND_URL}`,

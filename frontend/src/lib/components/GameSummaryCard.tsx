@@ -57,8 +57,8 @@ export function GameSummaryCard({
             month: "numeric",
             day: "numeric",
             hour: "numeric",
-            minute: "numeric",
             hour12: false,
+            minute: "numeric",
           })}
         </div>
 

@@ -77,7 +77,6 @@ export class AuthController {
   }
 
   @Post('logout')
-  @UseGuards(JwtGuard)
   @HttpCode(HttpStatus.OK)
   logout(@Res({ passthrough: true }) res: Response): { message: string } {
     res.clearCookie('access-token');

@@ -6,7 +6,7 @@ import {
   useLocation,
   useNavigate,
 } from "@tanstack/react-router";
-import { LayoutDashboard, LogOut, UserCircle2 } from "lucide-react";
+import { LayoutDashboard, LogOut, Moon, Sun, UserCircle2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { authApi } from "../features/auth/api/auth.api";
@@ -14,6 +14,7 @@ import { useAuthStore } from "../features/auth/store/auth.store";
 import { ErrorPage } from "../lib/components/ErrorPage";
 import { LoadingScreen } from "../lib/components/LoadingScreen";
 import { NotFoundPage } from "../lib/components/NotFoundPage";
+import { useThemeStore } from "../lib/store/theme.store";
 import { handleError } from "../lib/utils/utils";
 
 export const Route = createRootRouteWithContext<{
@@ -30,11 +31,23 @@ export function RootLayout() {
   const navigate = useNavigate();
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const theme = useThemeStore((state) => state.theme);
+  const toggleTheme = useThemeStore((state) => state.toggleTheme);
   const isAuthRoute = location.pathname === "/login" || location.pathname === "/register";
 
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [location.pathname]);
+
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.style.setProperty("--bg-clr", "hsl(223, 84%, 5%)");
+      document.documentElement.style.setProperty("--text-clr", "hsl(214, 32%, 91%)");
+    } else {
+      document.documentElement.style.setProperty("--bg-clr", "hsl(214, 32%, 91%)");
+      document.documentElement.style.setProperty("--text-clr", "hsl(223, 84%, 5%)");
+    }
+  }, [theme]);
 
   const logoutMutation = useMutation({
     mutationFn: () => authApi.logout(),
@@ -72,24 +85,10 @@ export function RootLayout() {
             {/* Desktop Navigation */}
             <div className="hidden items-center gap-6 md:flex">
               <nav className="flex items-center gap-6">
-                {auth.user ? (
+                {auth.user && (
                   <Link
                     to="/$username/dashboard"
-                    params={{ username: auth.user.username ?? "" }}
-                    className="text-sm font-medium border-b border-transparent hover:border-(--primary-clr)"
-                    inactiveProps={{
-                      className: "text-(--text-clr)/80",
-                    }}
-                    activeProps={{
-                      className: "text-(--primary-clr)",
-                    }}
-                  >
-                    לוח הבקרה
-                  </Link>
-                ) : (
-                  <Link
-                    to="/login"
-                    search={{ redirect: "/" }}
+                    params={{ username: auth.user.username }}
                     className="text-sm font-medium border-b border-transparent hover:border-(--primary-clr)"
                     inactiveProps={{
                       className: "text-(--text-clr)/80",
@@ -102,6 +101,19 @@ export function RootLayout() {
                   </Link>
                 )}
               </nav>
+
+              <button
+                type="button"
+                title={theme === "dark" ? "מצב בהיר" : "מצב כהה"}
+                className="cursor-pointer hover:-translate-y-0.5"
+                onClick={toggleTheme}
+              >
+                {theme === "dark" ? (
+                  <Sun className="size-5 hover:fill-(--text-clr)" />
+                ) : (
+                  <Moon className="size-5 hover:fill-(--text-clr)" />
+                )}
+              </button>
 
               {auth.user ? (
                 <div className="flex items-center gap-3">
@@ -169,6 +181,20 @@ export function RootLayout() {
           {isMobileMenuOpen && (
             <div className="h-[calc(100vh-102.5px)] overflow-y-auto border-t border-(--text-clr)/10 bg-(--bg-clr)/95 p-4 backdrop-blur-md md:hidden">
               <nav className="flex flex-col gap-2">
+                <button
+                  type="button"
+                  onClick={toggleTheme}
+                  className="cursor-pointer flex w-full items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm font-medium text-(--text-clr)/80 hover:bg-(--text-clr)/5 hover:text-(--text-clr)"
+                >
+                  {theme === "dark" ? (
+                    <Sun className="size-4 text-primary" />
+                  ) : (
+                    <Moon className="size-4 text-primary" />
+                  )}
+
+                  <span>{theme === "dark" ? "מצב בהיר" : "מצב כהה"}</span>
+                </button>
+
                 {auth.user ? (
                   <>
                     <div className="mb-2 flex items-center gap-3 rounded-2xl border border-primary/20 bg-primary/10 p-3">

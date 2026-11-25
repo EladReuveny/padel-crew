@@ -51,7 +51,7 @@ function LoginPage() {
     mutationFn: (data: LoginUserDto) => authApi.login(data),
     onSuccess: (data) => {
       login(data);
-      toast.success("התחברת בהצלחה.");
+      toast.success("התחברת בהצלחה");
       navigate({
         to: search.redirect ?? "/$username/dashboard",
         params: { username: data.username },

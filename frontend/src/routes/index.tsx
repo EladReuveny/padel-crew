@@ -69,7 +69,7 @@ function HomePage() {
 
   return (
     <div className="space-y-6 sm:space-y-8">
-      <section className="mx-auto max-w-[1600px] rounded-2xl sm:rounded-3xl md:rounded-[28px] border border-primary/20 bg-linear-to-r from-(--bg-clr) via-(--bg-clr) to-primary/40 p-4 sm:p-6 md:p-8 shadow-[0_25px_80px_rgba(2,6,23,0.8)]">
+      <section className="mx-auto max-w-[1600px] rounded-2xl sm:rounded-3xl md:rounded-[28px] border border-primary/20 bg-linear-to-r from-(--bg-clr) via-(--bg-clr) to-primary/40 p-4 sm:p-6 md:p-8 shadow-[0_0_8px_0_var(--primary-clr)]">
         <div className="flex flex-col gap-4 sm:gap-5 md:flex-row md:items-center md:justify-between">
           <div>
             <p className="text-xs sm:text-sm uppercase tracking-[0.25em] sm:tracking-[0.35em] text-primary/70">

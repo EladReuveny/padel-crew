@@ -52,7 +52,7 @@ function RegisterPage() {
     mutationFn: (data: RegisterUserDto) => authApi.register(data),
     onSuccess: (data) => {
       login(data);
-      toast.success("החשבון נוצר בהצלחה.");
+      toast.success("החשבון נוצר בהצלחה");
       navigate({
         to: search.redirect ?? "/$username/dashboard",
         params: { username: data.username },

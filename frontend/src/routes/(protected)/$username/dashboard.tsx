@@ -178,7 +178,7 @@ function DashboardPage() {
 
   return (
     <div className="space-y-8">
-      <section className="relative overflow-hidden rounded-[28px] border border-primary/20 bg-linear-to-r from-(--bg-clr) via-(--bg-clr) to-primary/40 p-6 shadow-[0_25px_80px_rgba(2,6,23,0.8)]">
+      <section className="relative overflow-hidden rounded-[28px] border border-primary/20 bg-linear-to-r from-(--bg-clr) via-(--bg-clr) to-primary/40 p-4 sm:p-6 md:p-8 shadow-[0_0_8px_0_var(--primary-clr)]">
         <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
           <div>
             <p className="text-sm uppercase tracking-[0.35em] text-primary/70">לוח בקרה</p>
@@ -188,7 +188,7 @@ function DashboardPage() {
             </h1>
 
             <p className="mt-2 text-sm text-(--text-clr)/70">
-              המגרשים, השחקנים ולוח המשחקים שלך כולם במקום אחד.
+              המגרשים, השחקנים ולוח המשחקים שלך כולם במקום אחד
             </p>
           </div>
 
